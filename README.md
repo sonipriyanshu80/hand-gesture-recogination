@@ -1,78 +1,61 @@
-# Hand Gesture Recognition using OpenCV and MediaPipe
+# Hand Gesture Recognition (Python 3.13 Compatible)
 
-A simple Python program that recognizes hand gestures in real-time using your webcam.
+A lightweight real-time hand gesture recognizer that uses classical OpenCV and NumPy image processing, so it works on Python 3.13 without MediaPipe.
 
 ## Features
 
-- Real-time hand gesture detection using webcam
-- Detects 21 hand landmarks using MediaPipe
+- Runs entirely on OpenCV + NumPy (no external ML dependencies)
+- Real-time finger counting for a single hand
+- Generates an on-screen hand skeleton with palm center and finger joints
 - Recognizes common gestures:
   - Fist (0 fingers)
   - One Finger
   - Victory (2 fingers)
   - Open Palm (5 fingers)
-  - Thumbs Up
+  - Thumbs Up (heuristic)
+- Shows both the annotated camera feed and the skin-mask debug view
 
 ## Requirements
 
-- Python 3.7 to 3.12 (MediaPipe doesn't support Python 3.13 yet)
+- Python 3.9 or newer (tested on 3.13)
 - Webcam
-- Internet connection (for initial package installation)
+- Packages listed in `requirements.txt`
 
 ## Installation
 
-1. Clone this repository:
-```bash
-git clone https://github.com/yourusername/hand-gesture-recognition.git
-cd hand-gesture-recognition
-```
-
-2. Install required packages:
-```bash
-pip install -r requirements.txt
-```
-or
-```bash
-python -m pip install -r requirements.txt
-```
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/yourusername/hand-gesture-recognition.git
+   cd hand-gesture-recognition
+   ```
+2. Install dependencies:
+   ```bash
+   pip install -r requirements.txt
+   ```
 
 ## Usage
 
-Run the program:
+Run the main script:
 ```bash
 python main.py
 ```
 
-- The webcam window will open
-- Show your hand in front of the camera
-- Hand landmarks will be drawn on the screen
-- Gesture name and finger count will be displayed
-- Press `q` key to quit
-
-## Project Structure
-
-```
-hand-gesture-recognition/
-├── README.md
-├── requirements.txt
-├── main.py
-├── .gitignore
-├── .github/
-│   └── workflows/
-│       └── static.yml
-└── docs/
-    └── project_description.txt
-```
+- A window named `Hand Gesture Recognition` will open with the live feed
+- A second `Skin Mask` window helps tune skin detection thresholds
+- Press `q` to exit both windows
 
 ## How It Works
 
-The program uses MediaPipe to detect hand landmarks. It counts fingers by comparing the positions of finger tips with their PIP (Proximal Interphalangeal) joints. Based on the finger count, it identifies different gestures.
+1. Frames are blurred and converted to HSV to build a skin-color mask.
+2. The largest contour in the mask is treated as the hand and outlined along with its convex hull.
+3. Convexity defects are analyzed to estimate finger count, draw a finger skeleton, and identify simple gestures (thumbs-up included).
 
-## Notes
+## Tips
 
-- Make sure you have good lighting for better detection
-- Keep your hand clearly visible in the frame
-- The program detects only one hand at a time
+- Good, even lighting improves skin segmentation.
+- Adjust the HSV skin thresholds in `preprocess_frame` if detection is unstable for your environment.
+- Keep the hand close to the camera and avoid cluttered backgrounds.
+- Customize the skeleton colors and opacity inside `draw_hand_skeleton` if you want a different visual style.
 
 ## Author
 
