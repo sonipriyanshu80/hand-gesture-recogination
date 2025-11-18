@@ -31,7 +31,7 @@ A real-time Python application that detects hand landmarks, draws MediaPipe-styl
 
 ### 1. Clone the repository
 ```bash
-git clone https://github.com/yourusername/hand-gesture-recognition.git
+git clone https://github.com/sonipriyanshu80/Hand_Gesture_Recognition.git
 cd Hand_Gesture_Recognition
 ```
 
@@ -79,6 +79,9 @@ pip install -r requirements.txt
 
 ```
 Hand_Gesture_Recognition/
+├── .github/
+│   └── workflows/
+│       └── static.yml   # GitHub Actions CI/CD pipeline
 ├── main.py              # Main application file
 ├── README.md           # This file
 ├── requirements.txt    # Python dependencies
@@ -117,6 +120,14 @@ Key parameters in `main.py`:
 - **Low FPS**: Reduce camera resolution or close other applications
 - **Installation issues**: Verify Python version compatibility (3.7-3.11)
 
+## 🔄 CI/CD Pipeline
+
+This project includes a GitHub Actions workflow (`.github/workflows/static.yml`) that:
+- Runs on push/pull requests to main/master branches
+- Tests on Ubuntu with Python 3.10
+- Installs dependencies and runs code linting with flake8
+- Validates import functionality
+
 ## 📋 Dependencies
 
 ```
@@ -127,7 +138,11 @@ numpy>=1.21.0
 ```
 
 ## 👨‍💻 Author 
-5th Semester Student Project
+Priyanka Jhamnani (233501171) (f1)
+Priyanshu Soni (233501174) (f1)
+Ridhima Tanwar (233501186) (f1)
+Simran Agarwal (233501207) (f2)
+Tarun Gwalani (233501221) (f1)
 
 ## 📄 License
 
