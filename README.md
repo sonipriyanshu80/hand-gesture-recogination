@@ -138,11 +138,11 @@ numpy>=1.21.0
 ```
 
 ## 👨‍💻 Author 
-Priyanka Jhamnani (233501171) (f1)
-Priyanshu Soni (233501174) (f1)
-Ridhima Tanwar (233501186) (f1)
-Simran Agarwal (233501207) (f2)
-Tarun Gwalani (233501221) (f1)
+Priyanka Jhamnani (233501171) (f1), 
+Priyanshu Soni (233501174) (f1), 
+Ridhima Tanwar (233501186) (f1), 
+Simran Agarwal (233501207) (f2), 
+Tarun Gwalani (233501221) (f1), 
 
 ## 📄 License
 
